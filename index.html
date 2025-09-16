@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Animated portfolio-Trilochan</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="nav-wrap">
+      <div class="logo">
+        <div class="mark">TM</div>
+        <h1>Trilochan Mahto</h1>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <button class="btn" id="hireBtn">Hire me</button>
+      </div>
+    </div>
+        </header>
+        <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h2><span class="elegant">Designing</span> <span class="bold">with purpose</span></h2>
+        <div class="subheading" id="typed">I craft websites that move — clean UI, smooth UX, and delightful animations.</div>
+        <div class="hero-cta">
+          <button class="btn" id="primaryCta">See my work</button>
+          <a href="#contact" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);">Contact</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="./images.jpeg" alt="showcase">
+      </div>
+    </div>
+  </section>
+
+   <section id="portfolio">
+    <h3 class="section-title">Portfolio</h3>
+    <div class="portfolio-grid">
+      
+      <article class="card">
+        <img src="./creative.jpeg" alt="Project 1">
+        <div class="meta"><strong>Project One</strong><p>Creative landing page</p></div>
+      </article>
+
+      <article class="card">
+        <img src="./mobile.jpeg" alt="Project 2">
+        <div class="meta"><strong>Project Two</strong><p>Mobile app UI</p></div>
+      </article>
+
+      <article class="card">
+        <img src="./identity.jpeg" alt="Project 3">
+        <div class="meta"><strong>Project Three</strong><p>Brand identity</p></div>
+      </article>
+
+      <article class="card">
+        <img src="./ecommerce.jpeg" alt="Project 4">
+        <div class="meta"><strong>Project Four</strong><p>eCommerce design</p></div>
+      </article>
+
+      <article class="card">
+        <img src="./analytic.webp" alt="Project 5">
+        <div class="meta"><strong>Project Five</strong><p>Analytics dashboard</p></div>
+      </article>
+
+      <article class="card">
+        <img src="./blogs.jpeg" alt="Project 6">
+        <div class="meta"><strong>Project Six</strong><p>Blog web page</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="services">
+    <h3 class="section-title">Services</h3>
+    <div class="services">
+      <div class="service">
+        <div class="icon">🎨</div>
+        <h4 class="small">UI / Visual Design</h4>
+        <p>Design systems and polished interfaces.</p>
+      </div>
+      <div class="service">
+        <div class="icon">💻</div>
+        <h4 class="small">Web Development</h4>
+        <p>HTML, CSS, JS — performant frontends.</p>
+      </div>
+      <div class="service">
+        <div class="icon">🚀</div>
+        <h4 class="small">Product Strategy</h4>
+        <p>From idea to launch-ready product.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h3 class="section-title">What clients say</h3>
+    <div class="testimonials" id="testimonialsBox">
+      <div class="testimonial"><strong>Acme Corp</strong><p>"Trilochan delivered a beautiful site ahead of schedule — our conversion improved instantly."</p></div>
+      <div class="testimonial"><strong>Blue Studio</strong><p>"Attention to detail and delightful micro-interactions made the product feel premium."</p></div>
+      <div class="testimonial"><strong>Green Labs</strong><p>"The team loved the new dashboard — it's faster and easier to use."</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3 class="section-title">Contact</h3>
+    <form id="contactForm" novalidate>
+      <input id="name" name="name" placeholder="Your name" />
+      <input id="email" name="email" placeholder="Your email" />
+      <textarea id="message" name="message" rows="6" placeholder="Your message"></textarea>
+      <button type="submit" class="submit-btn" id="submitBtn">Send message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div>©️ Trilochan Mahto — Creative Developer</div>
+    <div class="socials">
+      <div class="social">🔗</div>
+      <div class="social">🐦</div>
+      <div class="social">📷</div>
+    </div>
+  </footer>
+
+  <script>
+    
+    function attachRipple(btn){
+      btn.addEventListener('click', function(e){
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
+        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+        btn.appendChild(ripple);
+        
+        requestAnimationFrame(()=> ripple.classList.add('animate'));
+        
+        setTimeout(()=> ripple.remove(),700);
+      })
+    }
+    attachRipple(document.getElementById('primaryCta'));
+    attachRipple(document.getElementById('hireBtn'));
+
+    
+    const typed = document.getElementById('typed');
+    if(window.innerWidth <= 600){
+      typed.style.width = '100%';
+      typed.style.animation = 'none';
+    }
+
+    
+    const tBox = document.getElementById('testimonialsBox');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          tBox.classList.add('inview');
+          obs.disconnect();
+        }
+      })
+    },{threshold:0.2});
+    obs.observe(tBox);
+
+    
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){
+        
+        submitBtn.classList.remove('shake');
+        
+        void submitBtn.offsetWidth;
+        submitBtn.classList.add('shake');
+        return;
+      }
+      
+      submitBtn.textContent = 'Sent!';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = .7;
+    });
+
+    
+    setTimeout(()=>{
+      if(typed) typed.style.borderRight = 'none';
+    },4200);
+
+  </script>
+
+    </body>
+
+</html>
